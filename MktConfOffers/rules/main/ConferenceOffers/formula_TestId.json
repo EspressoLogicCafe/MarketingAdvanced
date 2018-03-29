@@ -1,0 +1,15 @@
+{
+  "name": "formula_TestId",
+  "entity": "ConferenceOffers",
+  "isActive": true,
+  "ruleType": "formula",
+  "attribute": "TestId",
+  "codeType": "JavaScript",
+  "isJIT": false,
+  "isAutoTitle": false,
+  "title": "incr test ID",
+  "comments": null,
+  "topics": [
+    "Test Counter"
+  ]
+}

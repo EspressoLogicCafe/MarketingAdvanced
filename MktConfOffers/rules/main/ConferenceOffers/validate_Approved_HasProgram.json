@@ -1,0 +1,16 @@
+{
+  "name": "validate_Approved_HasProgram",
+  "entity": "ConferenceOffers",
+  "isActive": true,
+  "ruleType": "validation",
+  "codeType": "JavaScript",
+  "errorMessage": "Sorry, you must assign to a Marketing Program before approving",
+  "problemAttributes": [
+  ],
+  "isAutoTitle": false,
+  "title": "Approval requires Marketing Program",
+  "comments": null,
+  "topics": [
+    "3. Integration"
+  ]
+}

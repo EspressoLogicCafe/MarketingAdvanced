@@ -1,0 +1,14 @@
+{
+  "name": "MarketingCostListener",
+  "isActive": true,
+  "loggingLevel": "Fine",
+  "description": "This listener is designed to ensure that message persisted (not lost), even if errors occur in message processing.\nSee the rules, and the Topic information.",
+  "connectionName": "AccountingConnection",
+  "providerName": "MQTT",
+  "parameters": {
+    "topic_name": {
+      "value": "MarketingCost",
+      "comments": null
+    }
+  }
+}

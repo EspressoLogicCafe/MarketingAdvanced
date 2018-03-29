@@ -1,0 +1,5 @@
+{
+  "name": "Test Counter",
+  "color": "#f8ff88",
+  "summary": "Counter, for testing row sent to Acctg.\nUsed in function: testAcctgAlert."
+}

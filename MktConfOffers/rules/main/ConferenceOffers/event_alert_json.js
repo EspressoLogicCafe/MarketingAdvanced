@@ -1,0 +1,1 @@
+if (row.Approved === true && row.Approved !== oldRow.Approved) {    var msgContent = logicContext.transformCurrentRow('AccountingAlert');	var result = SysUtility.publishMessage("PublishAccountingConnection","MarketingCost", msgContent, null);}// built using Examples (Sending Messages) and Control-Space

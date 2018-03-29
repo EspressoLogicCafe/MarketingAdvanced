@@ -1,0 +1,10 @@
+{
+  "name": "MktMgmtLib",
+  "version": "1.0",
+  "isUsedByProject": true,
+  "title": "MktMgmtLib",
+  "description": "Shared services for listeners, rules",
+  "groupName": "newlib",
+  "docsURL": null,
+  "referenceURL": null
+}

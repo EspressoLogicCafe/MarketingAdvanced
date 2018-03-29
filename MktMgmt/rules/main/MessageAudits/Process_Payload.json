@@ -1,0 +1,19 @@
+{
+  "name": "Process_Payload",
+  "entity": "MessageAudits",
+  "isActive": true,
+  "ruleType": "event",
+  "asynchronous": false,
+  "appliesTo": {
+    "insert": false,
+    "update": true,
+    "delete": false
+  },
+  "codeType": "JavaScript",
+  "isAutoTitle": false,
+  "title": "Process Payload to underlying tables",
+  "comments": "Updates trigger this to Process the Payload - save it to underlying tables (Charges and Talks).\n\nThe MessageAudits row contains the JSON or XML payload in the MsgContent column.  This event is typically triggered by the ProcessPayload function.",
+  "topics": [
+    "Process Message"
+  ]
+}

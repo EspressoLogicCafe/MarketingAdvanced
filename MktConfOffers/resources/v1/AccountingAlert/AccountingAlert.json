@@ -1,0 +1,45 @@
+{
+  "name": "AccountingAlert",
+  "description": "When managers approve, this provides mapping and transformation for MQTT message.",
+  "siblingRank": 100,
+  "resourceType": "TableBased",
+  "prefix": "main",
+  "entity": "ConferenceOffers",
+  "isCollection": true,
+  "isCombined": false,
+  "filter": null,
+  "order": null,
+  "useSchemaAttributes": false,
+  "attributes": [
+    {
+      "attribute": "name",
+      "alias": "name",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "ExhibitsCost",
+      "alias": "ExhibitsCost",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "TalksCost",
+      "alias": "TalksCost",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "TestId",
+      "alias": "TestId",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "MarketingProgramName",
+      "alias": "MarketingProgramName",
+      "description": null,
+      "isKey": false
+    }
+  ]
+}

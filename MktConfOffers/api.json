@@ -1,0 +1,7 @@
+{
+  "name": "MktConfOffers",
+  "urlFragment": "MktConfOffers",
+  "comments": "Intro tour in Learning Center - Example.\n\nNote: uses a public broker, which may not be allowed in some corporate networks.",
+  "isEnabled": true,
+  "authProviderName": "Built-in authentication"
+}

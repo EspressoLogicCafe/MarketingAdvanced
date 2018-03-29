@@ -1,0 +1,15 @@
+{
+  "name": "formula_Quantity",
+  "entity": "Exhibits",
+  "isActive": true,
+  "ruleType": "formula",
+  "attribute": "Quantity",
+  "codeType": "JavaScript",
+  "isJIT": false,
+  "isAutoTitle": false,
+  "title": "Default Quantity to 1",
+  "comments": null,
+  "topics": [
+    "1. Post"
+  ]
+}
