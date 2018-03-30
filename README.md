@@ -1,3 +1,4 @@
 # MarketingAdvanced
 
-Val Hubber and Abhishek Khare
+3/29
+	- working properties reader basically running, needs testing
