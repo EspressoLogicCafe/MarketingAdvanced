@@ -1,6 +1,19 @@
 var MktMgmt = {};  // a common JavaScript technique for name-scoping
 
-print("DIR: " + Java.type("java.lang.System").getProperty("user.dir"));
+/* this code executes when lib ref'd/loaded (e.g., by rule - see "Process Payload to underlying tables")
+    here, we save properties into MktMgmt, to outboard strings such as urls, headers etc
+    
+    API.Properties goes into your LAC folder (where the Derby DBs are - Finance, Marketing, MktConfOffers etc):
+    
+#API Propoerties
+
+authHeader={ "headers": {"Authorization" : "CALiveAPICreator AcctgToken:1"} }
+resourceURL=http://localhost:8080/rest/default/MktMgmt/v1
+
+    You can extend this to make the properties api-specific (eg, MktMgmt:authHeader=xxx)
+        or nodal (eg, MktMgmt.auth.header=xx)
+    
+*/
 
 MktMgmt.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
     var response = {};
@@ -13,7 +26,7 @@ MktMgmt.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
         return null;
     }
     var propEnum = prop.propertyNames();
-    while (propEnum.hasMoreElements()) {
+    while (propEnum.hasMoreElements()) {  // you could make these per-API
         var propName = propEnum.nextElement();
         var propValue = prop.getProperty(propName); //  + "";
         print("Prop: " + propName + " = " + propValue);
@@ -27,12 +40,15 @@ MktMgmt.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
 };
 
 print("\nMktMgmtLib loaded");
+print("..debug: current working directory for LAC: " + Java.type("java.lang.System").getProperty("user.dir"));
 
 var props = MktMgmt.readAPIProperties("MktMgmt");
 if (props === null) {
-    MktMgmt.auth = {};
-    MktMgmt.auth.settings = { 'headers': {'Authorization' : 'CALiveAPICreator' } };
+    print(".. from defaults");
+    MktMgmt.resourceURL = "http://localhost:8080/rest/default/MktMgmt/v1";
+    MktMgmt.authHeader = { 'headers': {'Authorization' : 'CALiveAPICreator' } };
 } else {
+    print("** from props");
     MktMgmt = props;
 }
-print("** MktMgmtLib - API Properties: " + JSON.stringify(props));
+print(".. MktMgmtLib - API Properties: " + JSON.stringify(props));

@@ -6,9 +6,9 @@ var messageAudit = {};  // create payload object for Posting to Messages resourc
 messageAudit.msgContent = messageContent;
 var messageAuditString = JSON.stringify(messageAudit);
 var parms = {};
-out.println(title + "Posting - URL: " + MktMgmt.auth.resourceURL + ", Payload: " + messageAuditString + "\n\n");
-var postPayloadResponse = listenerUtil.restPost(MktMgmt.auth.resourceURL + "/Messages", 
-                                parms, MktMgmt.auth.settings, messageAuditString);
+out.println(title + "Posting - URL: " + MktMgmt.resourceURL + ", Payload: " + messageAuditString + "\n\n");
+var postPayloadResponse = listenerUtil.restPost(MktMgmt.resourceURL + "/Messages", 
+                                parms, MktMgmt.authHeader, messageAuditString);
 out.println(title + "Payload Persisted, postPayloadResponse: " + postPayloadResponse + "\n\n");
 
 // now process payload, using function get: http://localhost:8080/rest/default/MktMgmt/v1/MessageAudits/102/ProcessPayload
@@ -16,9 +16,9 @@ var payLoadResponseObj = JSON.parse(postPayloadResponse);  // get id from txsumm
 var txsummary1 = payLoadResponseObj.txsummary[0];
 var href = txsummary1["@metadata"].href;  //http://localhost:8080/rest/default/MktConfOffers/v1/main:ConferenceOffers/1
 var id = href.substring(1 + href.lastIndexOf("/"));
-var functionURL = MktMgmt.auth.resourceURL + "/MessageAudits/" + id + "/ProcessPayload";
+var functionURL = MktMgmt.resourceURL + "/MessageAudits/" + id + "/ProcessPayload";
 out.println(title + ".. href: " + href + ", id: " + id + "; url: " + functionURL);
-var processPayloadResponse = SysUtility.restGet(functionURL, parms, MktMgmt.auth.settings);
+var processPayloadResponse = SysUtility.restGet(functionURL, parms, MktMgmt.authHeader);
 out.println(title + "Payload Processed, processPayloadResponse: " + processPayloadResponse);
 
 // built using Examples (Persist Payload) and Control-Space

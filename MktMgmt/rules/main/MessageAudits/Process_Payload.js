@@ -8,7 +8,7 @@ if (row.ProcessedStatus != oldRow.ProcessedStatus) {
     if (messageContent.startsWith("<"))
         settings.headers["Content-Type"] = "application/xml";  // omit this if strictly JSON
     
-    var postResponse = SysUtility.restPost(resourceURL, parms, MktMgmt.auth.settings, messageContent);
+    var postResponse = SysUtility.restPost(resourceURL, parms, MktMgmt.authHeader, messageContent);
     logicContext.logDebug(title + "Post Response: " + postResponse);
     
     // built using Examples (Persist Payload) and Control-Space
