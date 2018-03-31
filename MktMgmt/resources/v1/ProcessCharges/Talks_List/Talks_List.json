@@ -1,0 +1,34 @@
+{
+  "name": "Talks_List",
+  "description": null,
+  "siblingRank": 100,
+  "resourceType": "TableBased",
+  "prefix": "main",
+  "entity": "EventTalks",
+  "join": "\"Charges_ident\" = [\"ident\"]",
+  "isCollection": true,
+  "isCombined": false,
+  "filter": null,
+  "order": null,
+  "useSchemaAttributes": false,
+  "attributes": [
+    {
+      "attribute": "name",
+      "alias": "name",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "Total_Amount",
+      "alias": "Amount",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "SourceIdent",
+      "alias": "ident",
+      "description": null,
+      "isKey": false
+    }
+  ]
+}

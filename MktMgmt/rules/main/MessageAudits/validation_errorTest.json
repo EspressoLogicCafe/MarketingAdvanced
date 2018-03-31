@@ -1,0 +1,16 @@
+{
+  "name": "validation_errorTest",
+  "entity": "MessageAudits",
+  "isActive": true,
+  "ruleType": "validation",
+  "codeType": "JavaScript",
+  "errorMessage": "Intentional Error Signaled",
+  "problemAttributes": [
+  ],
+  "isAutoTitle": false,
+  "title": "Error Test - intentional error",
+  "comments": null,
+  "topics": [
+    "Error Handling"
+  ]
+}

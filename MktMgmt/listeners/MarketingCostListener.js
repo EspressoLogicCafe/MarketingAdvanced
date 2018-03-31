@@ -7,7 +7,7 @@ messageAudit.msgContent = messageContent;
 var messageAuditString = JSON.stringify(messageAudit);
 var parms = {};
 out.println(title + "Posting - URL: " + MktMgmt.resourceURL + ", Payload: " + messageAuditString + "\n\n");
-var postPayloadResponse = listenerUtil.restPost(MktMgmt.resourceURL + "/Messages", 
+var postPayloadResponse = listenerUtil.restPost(MktMgmt.resourceURL + "/PersistCharges", 
                                 parms, MktMgmt.authHeader, messageAuditString);
 out.println(title + "Payload Persisted, postPayloadResponse: " + postPayloadResponse + "\n\n");
 

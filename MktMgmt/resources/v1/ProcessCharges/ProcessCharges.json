@@ -1,0 +1,45 @@
+{
+  "name": "ProcessCharges",
+  "description": null,
+  "siblingRank": 100,
+  "resourceType": "TableBased",
+  "prefix": "main",
+  "entity": "Charges",
+  "isCollection": true,
+  "isCombined": false,
+  "filter": null,
+  "order": null,
+  "useSchemaAttributes": false,
+  "attributes": [
+    {
+      "attribute": "name",
+      "alias": "name",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "Cost_Talks",
+      "alias": "TalksCost",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "Cost_Exhibits",
+      "alias": "ExhibitsCost",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "SourceIdent",
+      "alias": "ident",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "TestId",
+      "alias": "TestId",
+      "description": null,
+      "isKey": false
+    }
+  ]
+}
