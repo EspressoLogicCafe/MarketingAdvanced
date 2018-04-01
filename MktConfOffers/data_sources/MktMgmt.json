@@ -14,7 +14,6 @@
   "catalog": null,
   "schema": "\"Accounting\"",
   "username": "\"Accounting\"",
-  "password": null,
   "maximumConnections": 20,
   "tableExcludes": null,
   "tableIncludes": null,
