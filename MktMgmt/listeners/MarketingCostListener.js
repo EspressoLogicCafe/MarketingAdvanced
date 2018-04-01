@@ -11,14 +11,17 @@ var postPayloadResponse = listenerUtil.restPost(MktMgmt.resourceURL + "/PersistC
                                 parms, MktMgmt.authHeader, messageAuditString);
 out.println(title + "Payload Persisted, postPayloadResponse: " + postPayloadResponse + "\n\n");
 
-// now process payload, using function get: http://localhost:8080/rest/default/MktMgmt/v1/MessageAudits/102/ProcessPayload
-var payLoadResponseObj = JSON.parse(postPayloadResponse);  // get id from txsummary
-var txsummary1 = payLoadResponseObj.txsummary[0];
-var href = txsummary1["@metadata"].href;  //http://localhost:8080/rest/default/MktConfOffers/v1/main:ConferenceOffers/1
-var id = href.substring(1 + href.lastIndexOf("/"));
-var functionURL = MktMgmt.resourceURL + "/MessageAudits/" + id + "/ProcessPayload";
-out.println(title + ".. href: " + href + ", id: " + id + "; url: " + functionURL);
-var processPayloadResponse = SysUtility.restGet(functionURL, parms, MktMgmt.authHeader);
-out.println(title + "Payload Processed, processPayloadResponse: " + processPayloadResponse);
+var persistInResponseEvent = true;  // for messages (instead of APIs), you *could* process here as follows
+if (! persistInResponseEvent) {
+    // now process payload, using function get: http://localhost:8080/rest/default/MktMgmt/v1/MessageAudits/102/ProcessPayload
+    var payLoadResponseObj = JSON.parse(postPayloadResponse);  // get id from txsummary
+    var txsummary1 = payLoadResponseObj.txsummary[0];
+    var href = txsummary1["@metadata"].href;  //http://localhost:8080/rest/default/MktConfOffers/v1/main:ConferenceOffers/1
+    var id = href.substring(1 + href.lastIndexOf("/"));
+    var functionURL = MktMgmt.resourceURL + "/MessageAudits/" + id + "/ProcessPayload";
+    out.println(title + ".. href: " + href + ", id: " + id + "; url: " + functionURL);
+    var processPayloadResponse = SysUtility.restGet(functionURL, parms, MktMgmt.authHeader);
+    out.println(title + "Payload Processed, processPayloadResponse: " + processPayloadResponse);
+}
 
 // built using Examples (Persist Payload) and Control-Space

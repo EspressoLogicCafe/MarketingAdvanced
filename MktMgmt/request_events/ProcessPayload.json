@@ -1,0 +1,6 @@
+{
+  "name": "ProcessPayload",
+  "eventType": "response",
+  "comments": "Processes the persisted payload, which has already been committed, so errors here do not lose it.",
+  "isActive": true
+}

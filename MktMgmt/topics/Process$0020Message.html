@@ -1,20 +1,18 @@
-<h2>Listener Ensures Messages Are Saved</h2>
+<h2>MessageAudit Posts (via Resource PersistCharges) is a persisted, <strong><em>without</em></strong> processing</h2>
 
-<p>We want to ensure that messages are saved, even if we encounter errors processing them.&nbsp; The Listener therefore operates as follows:</p>
-
-<ol>
-	<li>Saves&nbsp;the message into Resource <code>Messages</code> (table <code>MessageAudits</code>)<br />
-	&nbsp;</li>
-	<li>Updates <code>MessageAudits</code>&nbsp;(via the function described below) to&nbsp;process&nbsp;in a <em><strong>separate&nbsp;transaction</strong></em>&nbsp;(recall, each restPut/Post is a separate transaction</li>
-</ol>
+<p>We want to ensure that messages are saved, even if we encounter errors <em>processing</em> them.&nbsp; So, instead of creating an&nbsp;event&nbsp;on the &nbsp;<code>MessageAudits</code>&nbsp;table (which would fire in the same transaction), we use the Response Event described below.&nbsp;</p>
 
 <p>&nbsp;</p>
 
-<h2>Function on MessageAudit triggers Table Event for Re-Tryable Message Processing</h2>
+<h2>Response Handler calls MessageAudit&nbsp;Function to trigger&nbsp;Table Event for Re-Tryable Message Processing</h2>
+
+<p>The Response Handler&nbsp;uses the txsummary to Update the posted&nbsp;<code>MessageAudits</code>&nbsp;to&nbsp;process&nbsp;in a <em><strong>separate&nbsp;transaction</strong></em>&nbsp;(recall, each restPut/Post is a separate transaction).</p>
 
 <p>Processing is exposed as a function <code>ProcessPayload.&nbsp; MessageAudit.ProcessedStatus</code> tracks whether the&nbsp;message is successfully processed.&nbsp; The function sets this, which triggers the event below (update only - not on insert).</p>
 
 <p>The actual processing is simple - the <code>MessageAudit</code> payload (<code>msgContent</code>) is posted into the&nbsp;<code>Charges</code>&nbsp;resource, creating rows in the <code>Charges</code> and <code>Talks</code> tables.&nbsp; These would typically have further logic (e.g., to adjust General Ledger, etc).</p>
+
+<p>Note: we could have issued this code in the Listener, but using a response event enables the caller (MktConfOffers) to communicate either by messages or APIs.</p>
 
 <p>&nbsp;</p>
 
