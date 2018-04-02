@@ -1,11 +1,14 @@
-var title = "ProcessPayload Response Event: ";
-if ("ProcessCharges" == req.resourceName && req.verb.toString() == 'POST') {
-    // now process payload, using function get: http://localhost:8080/rest/default/MktMgmt/v1/MessageAudits/102/ProcessPayload
+var title = "ProcessPayload Request Event: ";
+var resourceInfo = MktMgmt.resourcesToAudit;
+// print(title + "checking for resource: " + req.resourceName + " in: " + JSON.stringify(MktMgmt.resourcesToAudit));
+if (MktMgmt.resourcesToAudit[req.resourceName] === true && req.verb.toString() == 'POST') {
     var reqData = {};
     reqData.msgContent = req.json;
     print(title + "is audited: " + MktMgmt.resourcesToAudit[req.resourceName] + ", payload: " + req.json);
     var functionURL = MktMgmt.resourceURL + "/PersistCharges" ; // + id + "/ProcessPayload";
     var persistPayloadResponse = SysUtility.restPost(functionURL, {}, MktMgmt.authHeader, reqData);
-    print(title + "Payload Persisted, processPayloadResponse: " + persistPayloadResponse);
+    print(title + "Payload persisted for resource: " + req.resourceName + ", processPayloadResponse: " + persistPayloadResponse);
+} else {
+    print(title + "Payload **not** persisted for resource: " + req.resourceName);
 }
 

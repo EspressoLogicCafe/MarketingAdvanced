@@ -1,7 +1,7 @@
 {
   "name": "event_alert_json",
   "entity": "ConferenceOffers",
-  "isActive": false,
+  "isActive": true,
   "ruleType": "event",
   "asynchronous": false,
   "appliesTo": {

@@ -1,5 +1,5 @@
 if (row.ProcessedStatus != oldRow.ProcessedStatus) {
-    var title = "Acctg Alert Event (4): ";
+    var title = "Acctg Alert Event (6): ";
     logicContext.logDebug (title + "Running***");
     
     var messageContent = row.msgContent;                        // the json/xml data

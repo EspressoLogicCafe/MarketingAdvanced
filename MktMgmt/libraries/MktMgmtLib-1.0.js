@@ -48,7 +48,7 @@ MktMgmtSvcs.loadResourcesToAudit = function loadResourcesToAudit(aMktMgmt) {
     var sysResourceInfoRows = SysUtility.getResource("main:SysResourceInfo", null);
     for (var i = 0 ; i < sysResourceInfoRows.length ; i++) {
         print("  ..each row: " + JSON.stringify(sysResourceInfoRows[i]));
-        var eachSysResourceInfo = JSON.stringify(sysResourceInfoRows[i]);
+        var eachSysResourceInfo = sysResourceInfoRows[i];
         aMktMgmt.resourcesToAudit[eachSysResourceInfo.ResourceName] = true;
     }
     return aMktMgmt;

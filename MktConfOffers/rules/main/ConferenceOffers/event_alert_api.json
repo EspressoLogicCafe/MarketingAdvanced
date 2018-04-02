@@ -1,7 +1,7 @@
 {
   "name": "event_alert_api",
   "entity": "ConferenceOffers",
-  "isActive": true,
+  "isActive": false,
   "ruleType": "event",
   "asynchronous": false,
   "appliesTo": {
