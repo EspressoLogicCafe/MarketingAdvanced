@@ -1,0 +1,6 @@
+{
+  "name": "ProcessPayloadOnRequest",
+  "eventType": "request",
+  "comments": "Persist the payload, so errors here do not lose it.",
+  "isActive": true
+}

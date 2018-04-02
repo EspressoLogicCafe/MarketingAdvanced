@@ -1,0 +1,6 @@
+{
+  "name": "ProcessPayloadOnResponse",
+  "eventType": "response",
+  "comments": "This approach does not work, since exceptions and validation failures bypass response events.",
+  "isActive": false
+}

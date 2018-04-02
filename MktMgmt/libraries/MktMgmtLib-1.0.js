@@ -1,11 +1,12 @@
 var MktMgmt = {};  // a common JavaScript technique for name-scoping
+var MktMgmtSvcs = {};
 
 /* this code executes when lib ref'd/loaded (e.g., by rule - see "Process Payload to underlying tables")
     here, we save properties into MktMgmt, to outboard strings such as urls, headers etc
     
     API.Properties goes into your LAC folder (where the Derby DBs are - Finance, Marketing, MktConfOffers etc):
     
-#API Propoerties
+#API Properties
 
 authHeader={ "headers": {"Authorization" : "CALiveAPICreator AcctgToken:1"} }
 resourceURL=http://localhost:8080/rest/default/MktMgmt/v1
@@ -15,7 +16,8 @@ resourceURL=http://localhost:8080/rest/default/MktMgmt/v1
     
 */
 
-MktMgmt.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
+// read the properties file, return props
+MktMgmtSvcs.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
     var response = {};
     var prop;
     try {
@@ -39,10 +41,28 @@ MktMgmt.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
     return response;
 };
 
+// table-driven technique so response event can be generic code
+MktMgmtSvcs.loadResourcesToAudit = function loadResourcesToAudit(aMktMgmt) {
+    print("\n..loadResourcesToAudit()");
+    aMktMgmt.resourcesToAudit = {};
+    var sysResourceInfoRows = SysUtility.getResource("main:SysResourceInfo", null);
+    for (var i = 0 ; i < sysResourceInfoRows.length ; i++) {
+        print("  ..each row: " + JSON.stringify(sysResourceInfoRows[i]));
+        var eachSysResourceInfo = JSON.stringify(sysResourceInfoRows[i]);
+        aMktMgmt.resourcesToAudit[eachSysResourceInfo.ResourceName] = true;
+    }
+    return aMktMgmt;
+};
+
+/* **********************************
+    Execution begins here
+    Occurs when library loaded
+************************************ */
+
 print("\nMktMgmtLib loaded");
 print("..debug: current working directory for LAC: " + Java.type("java.lang.System").getProperty("user.dir"));
 
-var props = MktMgmt.readAPIProperties("MktMgmt");
+var props = MktMgmtSvcs.readAPIProperties("MktMgmt");
 if (props === null) {
     print(".. from defaults");
     MktMgmt.resourceURL = "http://localhost:8080/rest/default/MktMgmt/v1";
@@ -51,4 +71,7 @@ if (props === null) {
     print("** from props");
     MktMgmt = props;
 }
+
+MktMgmt = MktMgmtSvcs.loadResourcesToAudit(MktMgmt);
+
 print(".. MktMgmtLib - API Properties: " + JSON.stringify(props));

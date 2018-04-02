@@ -14,5 +14,6 @@
   "title": "Alert Accounting - API",
   "comments": "APIs are commonly used for integration.  Note, though, that when the target system is down, the post fails, and this transaction would be rolled back.,\nmaking this service less autonomous.",
   "topics": [
+    "3. Integration"
   ]
 }
