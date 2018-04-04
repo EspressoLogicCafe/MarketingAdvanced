@@ -1,22 +1,21 @@
-out = java.lang.System.out;
-var db = "LoadTestData Startup Listener - ";
+var db = "MktConfOffers Startup Listener, LoadTestData - ";
 var url = "http://" + listenerUtil.getHostName() + ':8080/rest/default/mkt/v1/PartnerPost';
 var noFilter = {};
 var optionsAuth = { 'headers': {'Authorization' : 'CALiveAPICreator AdminKey:1'}};
 // log.debug(db + 'running, check for data at: ' + url);
-out.println('');
-out.println(db + 'running, check for data at: ' + url);  // http://localhost:8080/rest/default/mkt/v1/PartnerPost
+print('');
+print(db + 'running, check for data at: ' + url);  // http://localhost:8080/rest/default/mkt/v1/PartnerPost
 var response = listenerUtil.restGet(url, noFilter, optionsAuth);
 // out.println(db + 'running, restGet response: ' + response);
 if ("[]" !== response) {
-    out.println(db + "loaded... no action");
+    print(db + "loaded... no action");
 }  else {
     var data = testData();
-    out.println(db + 'empty - posting testData()');
+    print(db + 'empty - posting testData()');
     var postResponse = listenerUtil.restPost(url, null, optionsAuth, data);
     // out.println(db + 'empty - postResponse: ' + postResponse);
 }
-out.println('');
+print('');
 
 function testData() {
     return [
