@@ -11,7 +11,7 @@
   },
   "codeType": "JavaScript",
   "isAutoTitle": false,
-  "title": "Alert Accounting - JSON",
+  "title": "Alert Accounting - JSON Message",
   "comments": "Microservices architecture recommends that systems be autonomous, with decreased dependence on other systems. This internal communication is by way of a message (rather than an API), so that the event system functions even while accounting is down.\nThe Post to Accounting event rule type uses an MQTT message to implement this.  Kafka would be the same code.\n\nThis is the JSON version... activate *either* this or the XML version.",
   "topics": [
     "3. Integration"

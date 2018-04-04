@@ -1,4 +1,4 @@
-var title = "MarketMgmt Startup - ";
+var title = "MarketMgmt Startup -- ";
 MktStart = {};  // scope our functions
 print("\n" + title + "running: current working directory for LAC: " + Java.type("java.lang.System").getProperty("user.dir"));
 
@@ -47,7 +47,8 @@ MktStart.loadResourcesToAudit = function loadResourcesToAudit() {
     if (MktMgmt.loadResource !== true) {
         print(title + ".. resourcesToAudit stub");
     } else {
-        print(title + "..loadResourcesToAudit()");
+        print(title + "..loadResourcesToAudit() using url: " + 
+            MktMgmt.resourceURL + "/main:SysResourceInfo" + ", with authHeader" + JSON.stringify(MktMgmt.authHeader));
         var sysResourceInfoRows = listenerUtil.restGet(
                 MktMgmt.resourceURL + "/main:SysResourceInfo", null, MktMgmt.authHeader);
         for (var i = 0 ; i < sysResourceInfoRows.length ; i++) {
@@ -62,20 +63,22 @@ MktStart.loadResourcesToAudit = function loadResourcesToAudit() {
 /* **********************************
     Execution begins here
     Initialize MktMgmt (a library) props
-    Expect MktMgmt like: {"authHeader":{"headers":{"Authorization":"CALiveAPICreator AcctgToken:1"}},"resourceURL":"http://localhost:8080/rest/default/MktMgmt/v1","resourcesToAudit":{"ProcessCharges":true,"DummyResourceName":true}}
+    Expect MktMgmt like: {"authHeader":{"headers":{"Authorization":"CALiveAPICreator AcctgToken:1"}},"resourceURL":"http://localhost:8080/rest/default/MktMgmt/v1","resourcesToAudit":{"ProcessCharges":true,"DummyFromStub":true}}
 ************************************ */
 
+var config = {};
 var propsSetBy = title + "Properties from property file: ";
 var props = MktStart.readAPIProperties("MktMgmt");
 if (props === null) {
     propsSetBy = title + "Properties from defaults: ";
-    MktMgmt.resourceURL = "http://localhost:8080/rest/default/MktMgmt/v1";
-    MktMgmt.authHeader = { 'headers': {'Authorization' : 'CALiveAPICreator' } };
-    MktMgmt.loadResources = false;
+    config.resourceURL = "http://localhost:8080/rest/default/MktMgmt/v1";
+    config.authHeader = { 'headers': {'Authorization' : 'CALiveAPICreator' } };
+    config.loadResources = false;
 } else {
     MktMgmt = props;
 }
-print (propsSetBy + JSON.stringify(MktMgmt));
+print (propsSetBy + JSON.stringify(config));
 
-MktMgmt.resourcesToAudit = MktStart.loadResourcesToAudit(MktMgmt);
-print(title + "MktMgmtLib - API Configuration Properties: " + JSON.stringify(MktMgmt) + "\n");
+config.resourcesToAudit = MktStart.loadResourcesToAudit(MktMgmt);
+MktMgmtSvcs.configMkt(MktMgmt);
+print(title + "MktMgmtLib configured with MktMgmt: " + JSON.stringify(MktMgmt) + "\n");
