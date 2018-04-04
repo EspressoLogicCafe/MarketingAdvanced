@@ -42,19 +42,22 @@ MktStart.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
 };
 
 // table-driven technique so response event can be generic code
-MktStart.loadResourcesToAudit = function loadResourcesToAudit() {
+MktStart.loadResourcesToAudit = function loadResourcesToAudit(aConfig) {
     var result = {"ProcessCharges": true, "DummyFromStub": true};
-    if (MktMgmt.loadResource !== true) {
-        print(title + ".. resourcesToAudit stub");
+    if ( aConfig.loadResource !== "true") {
+        print(title + ".. resourcesToAudit stub, per: " + aConfig.loadResource);
     } else {
+        result={};
         print(title + "..loadResourcesToAudit() using url: " + 
-            MktMgmt.resourceURL + "/main:SysResourceInfo" + ", with authHeader" + JSON.stringify(MktMgmt.authHeader));
+            config.resourceURL + "/main:SysResourceInfo" + ", with authHeader" + JSON.stringify(config.authHeader));
         var sysResourceInfoRows = listenerUtil.restGet(
-                MktMgmt.resourceURL + "/main:SysResourceInfo", null, MktMgmt.authHeader);
-        for (var i = 0 ; i < sysResourceInfoRows.length ; i++) {
-            print(title + "  ..each row: " + JSON.stringify(sysResourceInfoRows[i]));
-            var eachSysResourceInfo = sysResourceInfoRows[i];
-            result[eachSysResourceInfo.ResourceName] = true;
+                MktMgmt.resourceURL + "/main:SysResourceInfo", null, config.authHeader);
+        var sysResourceRows = JSON.parse(sysResourceInfoRows);
+        for (var i = 0 ; i < sysResourceRows.length ; i++) {
+            var eachSysResourceInfoRow = sysResourceRows[i];
+            var resourceName = eachSysResourceInfoRow.ResourceName;
+            result[resourceName] = true;
+            print(title + "  ..setting: " + resourceName + ", in: " + JSON.stringify(eachSysResourceInfoRow));
         }
     }
     return result;
@@ -75,10 +78,10 @@ if (props === null) {
     config.authHeader = { 'headers': {'Authorization' : 'CALiveAPICreator' } };
     config.loadResources = false;
 } else {
-    MktMgmt = props;
+    config = props;
 }
 print (propsSetBy + JSON.stringify(config));
 
-config.resourcesToAudit = MktStart.loadResourcesToAudit(MktMgmt);
-MktMgmtSvcs.configMkt(MktMgmt);
+config.resourcesToAudit = MktStart.loadResourcesToAudit(config);
+MktMgmtSvcs.configMkt(config);
 print(title + "MktMgmtLib configured with MktMgmt: " + JSON.stringify(MktMgmt) + "\n");
