@@ -1,11 +1,10 @@
 {
-  "name": "Talks_List",
+  "name": "Charges",
   "description": null,
   "siblingRank": 100,
   "resourceType": "TableBased",
   "prefix": "main",
-  "entity": "EventTalks",
-  "join": "\"Charges_ident\" = [\"ident\"]",
+  "entity": "Charges",
   "isCollection": true,
   "isCombined": false,
   "filter": null,
@@ -19,14 +18,26 @@
       "isKey": false
     },
     {
-      "attribute": "Total_Amount",
-      "alias": "Amount",
+      "attribute": "Cost_Talks",
+      "alias": "TalksCost",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "Cost_Exhibits",
+      "alias": "ExhibitsCost",
       "description": null,
       "isKey": false
     },
     {
       "attribute": "SourceIdent",
       "alias": "ident",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "TestId",
+      "alias": "TestId",
       "description": null,
       "isKey": false
     }

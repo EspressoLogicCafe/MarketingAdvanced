@@ -44,8 +44,8 @@ MktStart.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
 // table-driven technique so response event can be generic code
 MktStart.loadResourcesToAudit = function loadResourcesToAudit(aConfig) {
     var result = {"ProcessCharges": true, "DummyFromStub": true};
-    if ( aConfig.loadResource !== "true") {
-        print(title + ".. resourcesToAudit stub, per: " + aConfig.loadResource);
+    if ( true ) { // aConfig.loadResource !== "true") {
+        print(title + ".. resourcesToAudit stub, per aConfig.loadResource: " + aConfig.loadResource);
     } else {
         result={};
         print(title + "..loadResourcesToAudit() using url: " + 
@@ -83,5 +83,12 @@ if (props === null) {
 print (propsSetBy + JSON.stringify(config));
 
 config.resourcesToAudit = MktStart.loadResourcesToAudit(config);
+print(title + "MktMgmtLib configuring MktStart.loadResourcesToAudit: " + JSON.stringify(config) + "\n");
 MktMgmtSvcs.configMkt(config);
+for (i = 0; i < 500000; i++) { 
+    if(i%100000===0){
+        print("i:" +i);
+    }
+}
+
 print(title + "MktMgmtLib configured with MktMgmt: " + JSON.stringify(MktMgmt) + "\n");

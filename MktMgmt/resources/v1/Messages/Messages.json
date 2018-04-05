@@ -1,11 +1,10 @@
 {
-  "name": "Talks_List",
+  "name": "Messages",
   "description": null,
   "siblingRank": 100,
   "resourceType": "TableBased",
   "prefix": "main",
-  "entity": "EventTalks",
-  "join": "\"Charges_ident\" = [\"ident\"]",
+  "entity": "MessageAudits",
   "isCollection": true,
   "isCombined": false,
   "filter": null,
@@ -13,20 +12,20 @@
   "useSchemaAttributes": false,
   "attributes": [
     {
-      "attribute": "name",
-      "alias": "name",
+      "attribute": "idAlerts",
+      "alias": "idAlerts",
       "description": null,
       "isKey": false
     },
     {
-      "attribute": "Total_Amount",
-      "alias": "Amount",
+      "attribute": "msgContent",
+      "alias": "msgContent",
       "description": null,
       "isKey": false
     },
     {
-      "attribute": "SourceIdent",
-      "alias": "ident",
+      "attribute": "Alerts_datetime",
+      "alias": "Alerts_datetime",
       "description": null,
       "isKey": false
     }
