@@ -1,15 +1,15 @@
 var title = "MarketMgmt Startup -- ";
 MktStart = {};  // scope our functions
-print("\n" + title + "running: current working directory for LAC: " + Java.type("java.lang.System").getProperty("user.dir"));
 
-/* When the API in started, this code runes to load outboared strings such as urls, headers etc.
-    We load from a property file (API.Properties) into MktMgmt (a data structure in our library).
+/* When the API in started, this code runes to load outboared strings such as urls, http headers etc.
+    We load from a property file (API.Properties) into MktMgmtLib's Config (a data structure in our library).
     API.Properties goes into your LAC folder (where the Derby DBs are - Finance, Marketing, MktConfOffers etc):
     
 #API Properties
 
 authHeader={ "headers": {"Authorization" : "CALiveAPICreator AcctgToken:1"} }
 resourceURL=http://localhost:8080/rest/default/MktMgmt/v1
+loadResourcesFromTable=true
 resourcesToAudit={"ProcessCharges": true, "DummyResourceName": true}
 
     You can extend this to make the properties api-specific (eg, MktMgmt:authHeader=xxx)
@@ -44,14 +44,15 @@ MktStart.readAPIProperties = function readAPIProperties(aProjectURLFragment) {
 // table-driven technique so response event can be generic code
 MktStart.loadResourcesToAudit = function loadResourcesToAudit(aConfig) {
     var result = {"ProcessCharges": true, "DummyFromStub": true};
-    if ( true ) { // aConfig.loadResource !== "true") {
-        print(title + ".. resourcesToAudit stub, per aConfig.loadResource: " + aConfig.loadResource);
+    var settings = aConfig.settings;
+    if ( settings.loadResourcesFromTable === false) {
+        print(title + "-- resourcesToAudit stub, per aConfig.loadResource: " + settings.loadResource);
     } else {
         result={};
-        print(title + "..loadResourcesToAudit() using url: " + 
-            config.resourceURL + "/main:SysResourceInfo" + ", with authHeader" + JSON.stringify(config.authHeader));
+        print(title + "..loadResourcesToAudit() using aConfig: " + JSON.stringify(aConfig));
         var sysResourceInfoRows = listenerUtil.restGet(
-                MktMgmt.resourceURL + "/main:SysResourceInfo", null, config.authHeader);
+                settings.resourceURL + "/main:SysResourceInfo", null, settings.authHeader);
+        print(title + "..sysResourceInfoRows");
         var sysResourceRows = JSON.parse(sysResourceInfoRows);
         for (var i = 0 ; i < sysResourceRows.length ; i++) {
             var eachSysResourceInfoRow = sysResourceRows[i];
@@ -63,32 +64,32 @@ MktStart.loadResourcesToAudit = function loadResourcesToAudit(aConfig) {
     return result;
 };
 
-/* **********************************
+
+/* *************************************************
     Execution begins here
-    Initialize MktMgmt (a library) props
-    Expect MktMgmt like: {"authHeader":{"headers":{"Authorization":"CALiveAPICreator AcctgToken:1"}},"resourceURL":"http://localhost:8080/rest/default/MktMgmt/v1","resourcesToAudit":{"ProcessCharges":true,"DummyFromStub":true}}
-************************************ */
+    Initialize MktMgmt (a library) Config.settings
+**************************************************** */
 
-var config = {};
-var propsSetBy = title + "Properties from property file: ";
-var props = MktStart.readAPIProperties("MktMgmt");
-if (props === null) {
-    propsSetBy = title + "Properties from defaults: ";
-    config.resourceURL = "http://localhost:8080/rest/default/MktMgmt/v1";
-    config.authHeader = { 'headers': {'Authorization' : 'CALiveAPICreator' } };
-    config.loadResources = false;
-} else {
-    config = props;
-}
-print (propsSetBy + JSON.stringify(config));
+var userDir = Java.type("java.lang.System").getProperty("user.dir");
+print("\n" + title + "running... current working directory for LAC: " + userDir);
 
-config.resourcesToAudit = MktStart.loadResourcesToAudit(config);
-print(title + "MktMgmtLib configuring MktStart.loadResourcesToAudit: " + JSON.stringify(config) + "\n");
-MktMgmtSvcs.configMkt(config);
-for (i = 0; i < 500000; i++) { 
-    if(i%100000===0){
-        print("i:" +i);
+var prepareConfig = {
+    createdBy: "MktMgmtStartup Listener",
+    settings: {
+        loadedBy: "MktMgmtStartup default settings - no API.properties file in " + userDir,
+        resourceURL: "http://localhost:8080/rest/default/MktMgmt/v1",
+        authHeader: { 'headers': {'Authorization' : 'CALiveAPICreator' } },
+        loadResourcesFromTable: true  // set false to bypass restGet for resource names to audit
     }
+};
+var props = MktStart.readAPIProperties("MktMgmt");
+if (props !== null) {
+    prepareConfig.settings = props;
+    prepareConfig.settings.loadedBy = "API.properties file in " + userDir;
 }
 
-print(title + "MktMgmtLib configured with MktMgmt: " + JSON.stringify(MktMgmt) + "\n");
+prepareConfig.settings.resourcesToAudit = MktStart.loadResourcesToAudit(prepareConfig);
+// print(title + "MktMgmtLib configuring MktStart.loadResourcesToAudit: " + JSON.stringify(prepareConfig) + "\n");
+
+Config.save(prepareConfig.settings);
+print(title + "Config.settings: " + JSON.stringify(Config.settings) + "\n");

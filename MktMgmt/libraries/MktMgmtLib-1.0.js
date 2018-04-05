@@ -1,9 +1,10 @@
-var MktMgmt = {};  // a common JavaScript technique for name-scoping
-print("\nMktMgmt loaded\n");
-
-var MktMgmtSvcs = {};  // MktMgmtSvcs
-
-MktMgmtSvcs.configMkt = function configMkt(aMkt) {
-    MktMgmt = aMkt;
-    print("MtkMgmt configured: " + JSON.stringify(MktMgmt));
+var Config = {  // a common technique for name-spacing in JavaScipt
+    created: new Date(),
+    save: function save(aMkt) {
+        Config.settings = aMkt;
+        Config.modified = new Date();
+        // print("MktMgmtLib Config'd: " + JSON.stringify(Config));
+    }
 };
+
+print("\nConfig loaded: " + JSON.stringify(Config) + "\n");
