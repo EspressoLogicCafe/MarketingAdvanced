@@ -1,0 +1,28 @@
+{
+  "name": "MarketingProgram",
+  "description": null,
+  "siblingRank": 100,
+  "resourceType": "TableBased",
+  "prefix": "MktMgmt",
+  "entity": "MarketingPrograms",
+  "join": "\"Name\" = [\"MarketingProgramName\"]",
+  "isCollection": false,
+  "isCombined": true,
+  "filter": "",
+  "order": null,
+  "useSchemaAttributes": false,
+  "attributes": [
+    {
+      "attribute": "Name",
+      "alias": "Name",
+      "description": null,
+      "isKey": false
+    },
+    {
+      "attribute": "Description",
+      "alias": "Description",
+      "description": null,
+      "isKey": false
+    }
+  ]
+}

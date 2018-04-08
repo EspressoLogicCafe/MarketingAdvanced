@@ -1,6 +1,6 @@
 {
   "name": "Conferences_Test",
-  "description": "Used by Function testAcctgAlert().",
+  "description": "Used by Function testAcctgAlert() - internal testing.",
   "siblingRank": 100,
   "resourceType": "TableBased",
   "prefix": "main",

@@ -1,0 +1,21 @@
+{
+  "name": "PartnerConfirmation",
+  "description": "Approved Conference Offers are confirmed to Partners.",
+  "siblingRank": 100,
+  "resourceType": "TableBased",
+  "prefix": "main",
+  "entity": "ConferenceOffers",
+  "isCollection": true,
+  "isCombined": false,
+  "filter": null,
+  "order": null,
+  "useSchemaAttributes": false,
+  "attributes": [
+    {
+      "attribute": "name",
+      "alias": "name",
+      "description": null,
+      "isKey": false
+    }
+  ]
+}

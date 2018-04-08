@@ -8,7 +8,7 @@
   "join": "\"Conferences_ident\" = [\"ident\"]",
   "isCollection": true,
   "isCombined": false,
-  "filter": null,
+  "filter": "\"Use\" = true",
   "order": null,
   "useSchemaAttributes": false,
   "attributes": [
