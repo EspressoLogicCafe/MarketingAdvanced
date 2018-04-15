@@ -11,3 +11,7 @@
 		-- Parent Lookup bug fix DE351475: Parent Lookup fails across DBs (MultiDB Parent Lookup)
 			-- (in build 3928, not field available)
 		-- Null Parent Lookup (fix pending) - DE356832: Multi-DB Null Virtual FK value makes data unreadable
+	- plus, required getTeamSpace()
+4/14
+	- fix bug in missing properties file
+	- set up for per-teamspace property file

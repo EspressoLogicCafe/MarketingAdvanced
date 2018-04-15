@@ -1,11 +1,11 @@
 var title = "ProcessPayload Request Event (2): ";
-print(title + "Started, with Config: " + JSON.stringify(Config));
+// print(title + "Started, with Config: " + JSON.stringify(Config) + "/n");
 if ( ! Config.hasOwnProperty('settings') ) { 
     print(title + "no settings - no action (eg., during startup listener");
 } else {
     if (Config.settings.hasOwnProperty('resourcesToAudit') ) {
         var resourceInfo = Config.settings.resourcesToAudit;
-        print(title + "checking for resource: " + req.resourceName + " in: " + JSON.stringify(resourceInfo) + ", Config: " + JSON.stringify(Config));
+        // print(title + "checking for resource: " + req.resourceName + " in: " + JSON.stringify(resourceInfo) + ", Config: " + JSON.stringify(Config));
         if (resourceInfo[req.resourceName] === true && req.verb.toString() == 'POST') {
             var reqData = {};
             reqData.msgContent = req.json;
