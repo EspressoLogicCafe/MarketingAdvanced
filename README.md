@@ -15,3 +15,7 @@
 4/14
 	- fix bug in missing properties file
 	- set up for per-teamspace property file
+4/19
+	- preliminary use of getTeamSpace().name in startup listener
+4/21
+	- use urlFragment instead of name

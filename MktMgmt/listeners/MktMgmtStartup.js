@@ -1,8 +1,4 @@
-var teamSpaceName = listenerUtil.getTeamSpaceInfo().name +""; // "default TeamSpace"
-var index = teamSpaceName.indexOf("TeamSpace");
-print ("Hey: " + index);
-if (teamSpaceName == "default TeamSpace")
-    teamSpaceName = "default";
+var teamSpaceName = listenerUtil.getTeamSpaceInfo().urlFragment +""; // TODO: SysUtility
 var title = "MktMgmt Startup [" + teamSpaceName + "]: ";
 MktStart = {};  // scope our functions
 
