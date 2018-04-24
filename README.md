@@ -24,4 +24,4 @@
 4/24
 	- many bugfixes in the test function, now running
 	- save importable zips in git, expanded test (in ppt)
-	- activate multi-DB Logic
+	- activate multi-DB Logic, revised ppt
