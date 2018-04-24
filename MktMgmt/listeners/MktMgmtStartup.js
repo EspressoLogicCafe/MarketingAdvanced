@@ -1,6 +1,7 @@
-var teamSpaceName = listenerUtil.getTeamSpaceInfo().urlFragment +""; // TODO: SysUtility
+var teamSpaceName = SysUtility.getTeamSpaceInfo().urlFragment; // 
 var title = "MktMgmt Startup [" + teamSpaceName + "]: ";
 MktStart = {};  // scope our functions
+print (title + "SysUtility.getTeamSpaceInfo(): " + JSON.stringify(SysUtility.getTeamSpaceInfo()));
 
 /* When the API in started, this code runes to load outboared strings such as urls, http headers etc.
     We load from a property file (<teamSpaceName>.Properties) into MktMgmtLib's Config (a data structure in our library).
