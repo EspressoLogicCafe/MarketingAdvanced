@@ -1,7 +1,7 @@
-var teamSpaceName = SysUtility.getTeamSpaceInfo().urlFragment; // 
+var teamSpaceName = SysUtility.getTeamSpaceInfo().urlFragment; // code-completion to follow
 var title = "MktMgmt Startup [" + teamSpaceName + "]: ";
 MktStart = {};  // scope our functions
-print (title + "SysUtility.getTeamSpaceInfo(): " + JSON.stringify(SysUtility.getTeamSpaceInfo()));
+// print (title + "SysUtility.getTeamSpaceInfo(): " + JSON.stringify(SysUtility.getTeamSpaceInfo()));
 
 /* When the API in started, this code runes to load outboared strings such as urls, http headers etc.
     We load from a property file (<teamSpaceName>.Properties) into MktMgmtLib's Config (a data structure in our library).
@@ -24,7 +24,7 @@ MktStart.readAPIProperties = function readAPIProperties(aPropFileName) {
         prop = java.util.Optional.of(new java.util.Properties()).map(function(p)
                 { p.load(new java.io.FileInputStream(aPropFileName)); return p;}).get();
     } catch (e) {
-        print (title + "** readAPIProperties - exception reading API.properties: " + e);
+        print (title + "** readAPIProperties - exception reading properties [" + aPropFileName + "]: " + e);
         return null;
     }
     var propEnum = prop.propertyNames();
@@ -71,7 +71,7 @@ MktStart.loadResourcesToAudit = function loadResourcesToAudit(aConfig) {
 **************************************************** */
 
 var userDir = Java.type("java.lang.System").getProperty("user.dir");
-var propFileName = "./" + teamSpaceName + ".properties";
+var propFileName = teamSpaceName + ".properties";
 print("\n" + title + "running... reading propFileName[" + propFileName +  "] in LAC default dir: " + userDir);
 
 
@@ -87,7 +87,7 @@ var prepareConfig = {
 var props = MktStart.readAPIProperties(propFileName);
 if (props !== null) {
     prepareConfig.settings = props;
-    prepareConfig.settings.loadedBy = "API.properties file in " + userDir;
+    prepareConfig.settings.loadedBy = teamSpaceName + ".properties file in " + userDir;
 }
 
 prepareConfig.settings.resourcesToAudit = MktStart.loadResourcesToAudit(prepareConfig);
