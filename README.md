@@ -21,3 +21,5 @@
 	- use urlFragment instead of name
 4/23
 	- use SysUtility instead of ListenerUtil, running
+4/24
+	- many bugfixes in the test function, now running
