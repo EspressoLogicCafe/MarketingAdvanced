@@ -1,21 +1,41 @@
-var db = "MktConfOffers Startup Listener, LoadTestData - ";
-var url = "http://" + listenerUtil.getHostName() + ':8080/rest/default/mkt/v1/PartnerPost';
+var title = "MktConfOffers Startup Listener, LoadTestData - ";
+
+var useSysUtilProjURL = false;  // enable to test features currently under 4.2 development
+var useGetResource = false;
+
+var projUrlFragment = "MktConfOffers";
+if (useSysUtilProjURL) {
+    projUrlFragment = SysUtility.getProjectInfo().urlFragment;
+    db("SysUtility.getProjectInfo(): " + JSON.stringify(SysUtility.getProjectInfo()));
+}
+var url = "http://" + listenerUtil.getHostName() + ':8080/rest/default/' + projUrlFragment + '/v1/PartnerPost';
 var noFilter = {};
 var optionsAuth = { 'headers': {'Authorization' : 'CALiveAPICreator AdminKey:1'}};
-// log.debug(db + 'running, check for data at: ' + url);
+// db('running, check for data at: ' + url);
 print('');
-print(db + 'running, check for data at: ' + url);  // http://localhost:8080/rest/default/mkt/v1/PartnerPost
-var response = listenerUtil.restGet(url, noFilter, optionsAuth);
-// out.println(db + 'running, restGet response: ' + response);
+var response = "";
+print(title + 'running, check for data at: ' + url);  // http://localhost:8080/rest/default/MktConfOffers/v1/PartnerPost
+if (useGetResource === true) {
+    response = SysUtility.getResource("PartnerPost", noFilter);
+} else {
+    response = listenerUtil.restGet(url, noFilter, optionsAuth);
+}
+// db(title + 'running, restGet response: ' + response);
 if ("[]" !== response) {
-    print(db + "loaded... no action");
+    db("loaded... no action");
 }  else {
     var data = testData();
-    print(db + 'empty - posting testData()');
+    db('empty - posting testData()');
     var postResponse = listenerUtil.restPost(url, null, optionsAuth, data);
-    // out.println(db + 'empty - postResponse: ' + postResponse);
+    // db('empty - postResponse: ' + postResponse);
 }
 print('');
+
+function db(aString) {
+    var printString = title + aString;
+    print(printString);
+    log.debug(printString);
+}
 
 function testData() {
     return [
@@ -62,5 +82,3 @@ function testData() {
       }
     ];
 }
-
-

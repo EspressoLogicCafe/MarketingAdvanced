@@ -1,8 +1,0 @@
-{
-  "name": "testAcctgAlert",
-  "isActive": true,
-  "comments": "Alternative to UI, use Get on this to test Marketing and Accounting.  Expect the response shown below.",
-  "returnType": "{\"statusCode\":201,\"message\":\"ok App Economy World[1], TestId: 2, reset: false\"}",
-  "parameters": null,
-  "functionType": "apiLevel"
-}

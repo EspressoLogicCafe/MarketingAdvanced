@@ -25,3 +25,5 @@
 	- many bugfixes in the test function, now running
 	- save importable zips in git, expanded test (in ppt)
 	- activate multi-DB Logic, revised ppt
+4/25
+	- substantial changes to the MktConfOffers test function

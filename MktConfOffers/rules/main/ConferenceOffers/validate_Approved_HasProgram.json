@@ -1,7 +1,7 @@
 {
   "name": "validate_Approved_HasProgram",
   "entity": "ConferenceOffers",
-  "isActive": false,
+  "isActive": true,
   "ruleType": "validation",
   "codeType": "JavaScript",
   "errorMessage": "Sorry, you must assign to a Marketing Program before approving",
