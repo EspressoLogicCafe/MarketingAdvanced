@@ -1,4 +1,7 @@
-var teamSpaceName = SysUtility.getTeamSpaceInfo().urlFragment; // code-completion to follow
+var teamSpaceName = 'default';
+if (SysUtility === null)        // this for pre 4.1.0.6 LAC versions
+    teamSpaceName = SysUtility.getTeamSpaceInfo().urlFragment; // code-completion to follow
+
 var title = "MktMgmt Startup [" + teamSpaceName + "]: ";
 MktStart = {};  // scope our functions
 // print (title + "SysUtility.getTeamSpaceInfo(): " + JSON.stringify(SysUtility.getTeamSpaceInfo()));

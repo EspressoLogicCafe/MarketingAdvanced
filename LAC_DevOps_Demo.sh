@@ -1,5 +1,6 @@
 #!/bin/bash
 current_dir=$(pwd)
+mkdir newRepos
 current_dir="$current_dir/newRepos"
 echo "current_dir ==> " $current_dir
 echo =====================================================================================
@@ -20,10 +21,9 @@ echo
 lacVersion=$(lac --version)
 lacAdminVersion=$(lacadmin --version)
 lacadmin --version &> /dev/null
-
+lacadmin login -u admin -p Password1 http://localhost:8080
 repos=( 
-  "/Users/khaab05/lac/EspressoLogicCafe/MarketingAdvanced"
-  "/Users/khaab05/lac/EspressoLogicCafe/AuthenticationExample"
+  "/Users/hubva01/ca/OneDrive - CA Technologies/LiveAPICreator/api-projects/Market Integration/MktAdv/MarketingAdvanced"
 )
 
 echo ""
