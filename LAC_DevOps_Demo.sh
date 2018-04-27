@@ -23,7 +23,7 @@ lacAdminVersion=$(lacadmin --version)
 lacadmin --version &> /dev/null
 lacadmin login -u admin -p Password1 http://localhost:8080
 repos=( 
-  "/Users/hubva01/ca/OneDrive - CA Technologies/LiveAPICreator/api-projects/Market Integration/MktAdv/MarketingAdvanced"
+  "/Users/khaab05/lac/EspressoLogicCafe/MarketingAdvanced"
 )
 
 echo ""
@@ -46,8 +46,12 @@ echo
   	mv *.zip $current_dir
   	echo "****** Move the zip to current dir  ******"
   	echo "******** Importing Project:: "$current_dir/"${i%/}.zip" " ******************"
-
-  	lacadmin api import --file  $current_dir/"${i%/}.zip" --namecollision replace_existing
+    echo $i
+    if [[ $i =~ ^(data/|newRepos/)$ ]]; then 
+  		echo "DO NOT IMPORT"
+    else
+      lacadmin api import --file  $current_dir/"${i%/}.zip" --namecollision replace_existing
+	  fi  
   done
 done
 echo "************* Complete ************"
