@@ -28,4 +28,6 @@
 4/25
 	- substantial changes to the MktConfOffers test function
 4/26
-	- enable listener to run on 4.1.0.2
+	- enable listener to run on 4.1.0.2 (works except for test data)
+4/30
+	- add zips to git
