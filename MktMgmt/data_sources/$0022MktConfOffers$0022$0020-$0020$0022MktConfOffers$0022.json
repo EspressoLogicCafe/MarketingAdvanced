@@ -1,0 +1,28 @@
+{
+  "name": "\"MktConfOffers\" - \"MktConfOffers\"",
+  "prefix": "main",
+  "title": null,
+  "databaseType": "DERBY",
+  "comments": "Created using Connect Wizard",
+  "isActive": true,
+  "isLogErrors": false,
+  "isSchemaEditable": true,
+  "isSupportBoolean": false,
+  "isReadOnly": false,
+  "useJNDIDataSource": false,
+  "url": "jdbc:derby:MktConfOffers",
+  "catalog": null,
+  "schema": "\"Marketing\"",
+  "username": "\"Marketing\"",
+  "maximumConnections": 20,
+  "tableExcludes": null,
+  "tableIncludes": null,
+  "procedureExcludes": null,
+  "procedureIncludes": null,
+  "nonPersistentAttributes": {
+  },
+  "tableInfos": {
+  },
+  "viewInfos": {
+  }
+}

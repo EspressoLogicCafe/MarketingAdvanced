@@ -1,23 +1,65 @@
 [
   {
-    "parentEntity": "main:Charges",
-    "childEntity": "main:EventTalks",
-    "roleToParent": "Charges",
-    "roleToChild": "EventTalks_List",
+    "parentEntity": "main:ConferenceOffers",
+    "childEntity": "main:Exhibits",
+    "roleToParent": "ConferenceOffers",
+    "roleToChild": "Exhibits_List",
     "deleteRule": "Cascade",
-    "updateRule": "Cascade",
+    "updateRule": "No Action",
     "parentColumns": [
       "ident"
     ],
     "childColumns": [
-      "Charges_ident"
+      "Conferences_ident"
     ]
   },
   {
-    "parentEntity": "main:MarketingPrograms",
-    "childEntity": "main:Charges",
+    "parentEntity": "main:ConferenceOffers",
+    "childEntity": "main:Exhibits",
+    "roleToParent": "Conferences",
+    "roleToChild": "Exhibits_List_1",
+    "deleteRule": "Cascade",
+    "updateRule": "No Action",
+    "parentColumns": [
+      "ident"
+    ],
+    "childColumns": [
+      "Conferences_ident"
+    ]
+  },
+  {
+    "parentEntity": "main:ConferenceOffers",
+    "childEntity": "main:Talks",
+    "roleToParent": "ConferenceOffers",
+    "roleToChild": "Talks_List",
+    "deleteRule": "Cascade",
+    "updateRule": "No Action",
+    "parentColumns": [
+      "ident"
+    ],
+    "childColumns": [
+      "Conferences_ident"
+    ]
+  },
+  {
+    "parentEntity": "main:ConferenceOffers",
+    "childEntity": "main:Talks",
+    "roleToParent": "Conferences",
+    "roleToChild": "Talks_List_1",
+    "deleteRule": "Cascade",
+    "updateRule": "No Action",
+    "parentColumns": [
+      "ident"
+    ],
+    "childColumns": [
+      "Conferences_ident"
+    ]
+  },
+  {
+    "parentEntity": "MktMgmt:MarketingPrograms",
+    "childEntity": "main:ConferenceOffers",
     "roleToParent": "MarketingProgram",
-    "roleToChild": "Charges_List",
+    "roleToChild": "ConferenceOffers_List",
     "deleteRule": "No Action",
     "updateRule": "No Action",
     "parentColumns": [

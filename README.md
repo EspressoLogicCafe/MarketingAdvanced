@@ -31,3 +31,5 @@
 	- enable listener to run on 4.1.0.2 (works except for test data)
 4/30
 	- add zips to git
+5/6
+	- revise to run with LAC 4.1, use lib for Mkt to avoid hard-coded strings

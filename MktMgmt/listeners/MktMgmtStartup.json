@@ -1,9 +1,0 @@
-{
-  "name": "MktMgmtStartup",
-  "isActive": true,
-  "loggingLevel": "Warning",
-  "description": null,
-  "connectionName": null,
-  "providerName": "Startup",
-  "parameters": null
-}

@@ -1,6 +1,0 @@
-{
-  "name": "ProcessPayloadOnRequest",
-  "eventType": "request",
-  "comments": "Persist the payload, so errors here do not lose it.\nNote this code is generic (no if resourceName = xxx case statement), per MktMgmt.resourcesToAudit.",
-  "isActive": true
-}

@@ -1,0 +1,24 @@
+{
+  "name": "PublishAccountingConnection",
+  "isActive": true,
+  "description": "MQTT connection used to publish messages of topic “MarketingCost” to notify Accounting API that event is approved.",
+  "providerName": "MQTT",
+  "parameters": {
+    "clientId": {
+      "value": "RANDOM",
+      "comments": null
+    },
+    "keepAliveInterval": {
+      "value": "20",
+      "comments": null
+    },
+    "automaticReconnect": {
+      "value": "true",
+      "comments": null
+    },
+    "broker": {
+      "value": "tcp://localhost:1883",
+      "comments": "local might be tcp://localhost:1883"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "MktMgmt",
+  "prefix": "MktMgmt",
+  "title": "Apache Derby (also known as Oracle JavaDB)",
+  "databaseType": "DERBY",
+  "comments": null,
+  "isActive": true,
+  "isLogErrors": false,
+  "isSchemaEditable": false,
+  "isSupportBoolean": false,
+  "isReadOnly": false,
+  "useJNDIDataSource": false,
+  "url": "jdbc:derby:MktMgmt",
+  "catalog": null,
+  "schema": "\"Accounting\"",
+  "username": "\"Accounting\"",
+  "maximumConnections": 20,
+  "tableExcludes": null,
+  "tableIncludes": null,
+  "procedureExcludes": null,
+  "procedureIncludes": null,
+  "nonPersistentAttributes": {
+  },
+  "tableInfos": {
+  },
+  "viewInfos": {
+  }
+}

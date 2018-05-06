@@ -1,7 +1,7 @@
 {
-  "name": "MktMgmt",
-  "urlFragment": "MktMgmt",
-  "comments": "Enable Manage > Listeners > Connections; see Rules > Process Messages topic.\nWorks with the MktConfOffers API.\nNote: uses public broker, not allowed in some corporate networks).",
+  "name": "MktConfOffers",
+  "urlFragment": "MktConfOffers",
+  "comments": "Intro tour in Learning Center - Example.\n\nNote: uses a public broker, which may not be allowed in some corporate networks.",
   "isEnabled": true,
   "authProviderName": "Built-in authentication"
 }
