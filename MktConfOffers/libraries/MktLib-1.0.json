@@ -1,0 +1,10 @@
+{
+  "name": "MktLib",
+  "version": "1.0",
+  "isUsedByProject": true,
+  "title": "MktLib",
+  "description": "Reuse (constant strings, etc)",
+  "groupName": "newlib",
+  "docsURL": null,
+  "referenceURL": null
+}

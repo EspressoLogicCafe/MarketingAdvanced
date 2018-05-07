@@ -12,7 +12,7 @@
   "codeType": "JavaScript",
   "isAutoTitle": false,
   "title": "Alert Accounting - API",
-  "comments": "APIs are commonly used for integration.  Note, though, that when the target system is down, the post fails, and this transaction would be rolled back.,\nmaking this service less autonomous.",
+  "comments": "APIs are commonly used for integration.  Note, though, that when the target system is down, the post fails, and this transaction would be rolled back.,\nmaking this service less autonomous.  A more autonomous approach is shown in Alert Account - JSON Message",
   "topics": [
     "3. Integration"
   ]
